@@ -7,6 +7,6 @@ import App from './components/app';
 
 export default (
     <Route path='/' component={App}>
-        <IndexRoute component={App} />
+        
     </Route>
 );
