@@ -12,7 +12,7 @@ class SignOut extends React.Component {
     
     render() {
         return (
-            <div className="jumbotron">
+            <div>
                 <h2>You have signed out. Bye for now...</h2>
             </div>
         );

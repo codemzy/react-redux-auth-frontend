@@ -34,3 +34,10 @@ export function authError(error) {
         payload: error
     };
 }
+
+export function signoutUser() {
+    // remove token from localStorage
+    localStorage.removeItem('token');
+    // dispatch action
+    return { type: UNAUTH_USER };
+}
