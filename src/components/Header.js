@@ -13,10 +13,10 @@ class Header extends React.Component {
         );
       } else {
         return [
-            <li className="nav-item">
+            <li className="nav-item" key={1}>
               <Link to="/signin" className="nav-link" activeClassName="active">Sign In</Link>
             </li>,
-            <li className="nav-item">
+            <li className="nav-item" key={2}>
               <Link to="/register" className="nav-link" activeClassName="active">Register</Link>
             </li>
         ];
@@ -28,9 +28,7 @@ class Header extends React.Component {
             <nav className="navbar navbar-light bg-faded">
               <IndexLink to="/" className="navbar-brand" activeClassName="active">Home</IndexLink>
               <ul className="nav navbar-nav">
-                <li className="nav-item">
-                  {this._renderAccountLinks()}
-                </li>
+                {this._renderAccountLinks()}
               </ul>
             </nav>
         );
