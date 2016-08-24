@@ -1,10 +1,13 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 
+import { signinUser } from '../../actions/index.js';
+
 class SignIn extends React.Component {
     
     _handleFormSubmit({ email, password }) {
         console.log(email, password);
+        this.props.dispatch(signinUser({ email, password }));
     }
     
     render() {
