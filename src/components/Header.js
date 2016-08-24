@@ -12,16 +12,14 @@ class Header extends React.Component {
           </li>
         );
       } else {
-        return (
-          <div>
+        return [
             <li className="nav-item">
               <Link to="/signin" className="nav-link" activeClassName="active">Sign In</Link>
-            </li>
+            </li>,
             <li className="nav-item">
               <Link to="/register" className="nav-link" activeClassName="active">Register</Link>
             </li>
-          </div>
-        );
+        ];
       }
     }
     
