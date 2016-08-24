@@ -9,6 +9,7 @@ import Register from './components/auth/Register';
 
 export default (
     <Route path='/' component={App}>
+        <IndexRoute component={SignIn} />
         <Route path="/signin" component={SignIn} />
         <Route path="/signout" component={SignOut} />
         <Route path="/register" component={Register} />

@@ -39,4 +39,4 @@ export default connect((state) => {
   return {
     authenticated: state.auth.authenticated
   };
-})(Header);
+}, null, null, { pure: false })(Header);
