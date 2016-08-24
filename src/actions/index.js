@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 /* global localStorage */
 
 // action types
-import { AUTH_USER, UNAUTH_USER } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from './types';
 
 const ROOT_URL = 'https://node-jwt-auth-api-codemzy.c9users.io';
 
@@ -22,7 +22,15 @@ export function signinUser({email, password}) {
             })
             .catch(() => {
                 // if request is bad show an error to the user
+                dispatch(authError('Invalid login info'));
             });
         
+    };
+}
+
+export function authError(error) {
+    return {
+        type: AUTH_ERROR,
+        payload: error
     };
 }
