@@ -13,7 +13,7 @@ export default function(state = {}, action) {
             authenticated: false
         };
     }
-    if (action.type === UNAUTH_USER) {
+    if (action.type === AUTH_ERROR) {
         return {
             ...state,
             error: action.payload
