@@ -4,7 +4,8 @@ export default function(state = {}, action) {
     if (action.type === AUTH_USER) {
         return {
             ...state,
-            authenticated: true
+            authenticated: true,
+            error: ''
         };
     }
     if (action.type === UNAUTH_USER) {
