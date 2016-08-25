@@ -11,6 +11,16 @@ class Register extends React.Component {
         this.props.signupUser(formProps);
     }
     
+    _renderAlert() {
+        if (this.props.errorMessage) {
+            return (
+                <div className="alert alert-danger">
+                    <strong>Oops!</strong> {this.props.errorMessage}
+                </div>
+            );
+        }
+    }
+    
     render() {
         const { handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
         return (
@@ -31,6 +41,7 @@ class Register extends React.Component {
                     <input type="password" className="form-control" {...passwordConfirm} />
                     <div className="text-help form-control-label">{passwordConfirm.touched ? passwordConfirm.error : '' }</div>
                 </fieldset>
+                {this._renderAlert()}
                 <button type="submit" className="btn btn-primary">Register</button>
             </form>
         );
@@ -58,4 +69,8 @@ export default reduxForm({
     form: 'register',
     fields: ['email', 'password', 'passwordConfirm'],
     validate
-}, null, {signupUser: signupUser})(Register);
+}, (state) => {
+        return {
+            errorMessage: state.auth.error
+        };
+    }, {signupUser: signupUser})(Register);

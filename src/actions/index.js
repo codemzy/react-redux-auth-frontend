@@ -30,10 +30,19 @@ export function signinUser({email, password}) {
 
 export function signupUser({email, password}) {
     return function(dispatch) {
-        axios.post(ROOT_URL + '/signup', { email, password });
-            // .then((response) => {
-                
-            // });
+        axios.post(ROOT_URL + '/signup', { email, password })
+            .then((response) => {
+                // if request is good update state to indicate user is authenticated (dispatch action)
+                dispatch({ type: AUTH_USER });
+                // save JWT token to localStorage
+                localStorage.setItem('token', response.data.token);
+                // redirect to the route '/feature' using react router
+                browserHistory.push('/feature');
+            })
+            .catch((error) => {
+                // if request is bad show an error to the user
+                dispatch(authError(error.response.data.error));
+            });
     };
 }
 
