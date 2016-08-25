@@ -2,13 +2,19 @@ import React from 'react';
 import { reduxForm } from 'redux-form'
 
 // actions
-// TODO
+import { signupUser } from '../../actions/index.js';
 
 class Register extends React.Component {
+    
+    _handleFormSubmit(formProps) {
+        // call an action creator to sign up the user
+        this.props.signupUser(formProps);
+    }
+    
     render() {
         const { handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
         return (
-            <form>
+            <form onSubmit={handleSubmit(this._handleFormSubmit.bind(this))}>
                 <h1 className="page-title">Register.</h1>
                 <fieldset className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
                     <label>Email:</label>
@@ -52,4 +58,4 @@ export default reduxForm({
     form: 'register',
     fields: ['email', 'password', 'passwordConfirm'],
     validate
-})(Register);
+}, null, {signupUser: signupUser})(Register);
