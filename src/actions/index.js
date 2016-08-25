@@ -62,7 +62,9 @@ export function signoutUser() {
 
 export function fetchProtectedMessage() {
     return function(dispatch) {
-        axios.get(ROOT_URL + '/protected')
+        axios.get(ROOT_URL + '/protected', {
+                headers: { authorization: localStorage.getItem('token') }
+        })
             .then((response) => {
                 console.log(response);
             })
