@@ -59,3 +59,15 @@ export function signoutUser() {
     // dispatch action
     return { type: UNAUTH_USER };
 }
+
+export function fetchProtectedMessage() {
+    return function(dispatch) {
+        axios.get(ROOT_URL + '/protected')
+            .then((response) => {
+                console.log(response);
+            })
+            .catch(() => {
+                
+            });
+    };
+}

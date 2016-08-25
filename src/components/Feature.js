@@ -1,6 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+// actions
+import { fetchProtectedMessage } from '../actions/index.js';
 
 class Feature extends React.Component {
+    
+    componentWillMount() {
+        // get protected content from server
+        this.props.dispatch(fetchProtectedMessage());
+    }
+    
     render() {
         return (
             <div>
@@ -11,4 +21,4 @@ class Feature extends React.Component {
     }
 }
 
-export default Feature;
+export default connect()(Feature);

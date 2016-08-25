@@ -21,6 +21,7 @@ const store = createStoreWithMiddleware(reducers);
 const token = localStorage.getItem('token');
 // if we have a token consider the user to be signed in
 if (token) {
+  // TODO check if token is valid https://thinkster.io/angularjs-jwt-auth
   // update the application state
   store.dispatch({ type: AUTH_USER });
 }
