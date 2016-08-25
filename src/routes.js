@@ -6,6 +6,7 @@ import App from './components/app';
 import SignIn from './components/auth/SignIn';
 import SignOut from './components/auth/SignOut';
 import Register from './components/auth/Register';
+import Feature from './components/Feature';
 
 export default (
     <Route path='/' component={App}>
@@ -13,5 +14,6 @@ export default (
         <Route path="/signin" component={SignIn} />
         <Route path="/signout" component={SignOut} />
         <Route path="/register" component={Register} />
+        <Route path="/feature" component={Feature} />
     </Route>
 );
