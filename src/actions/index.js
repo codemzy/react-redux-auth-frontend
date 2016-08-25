@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 /* global localStorage */
 
 // action types
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FETCH_MESSAGE } from './types';
 
 const ROOT_URL = 'https://node-jwt-auth-api-codemzy.c9users.io';
 
@@ -66,7 +66,10 @@ export function fetchProtectedMessage() {
                 headers: { authorization: localStorage.getItem('token') }
         })
             .then((response) => {
-                console.log(response);
+                dispatch({
+                    type: FETCH_MESSAGE,
+                    payload: response.data.message
+                });
             })
             .catch(() => {
                 
